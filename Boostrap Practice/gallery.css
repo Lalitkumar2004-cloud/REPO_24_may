@@ -1,0 +1,17 @@
+h1 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.d-flex{
+   display: flex;
+    background-color: black;
+}
+
+
+
+
+.d-flex ,img {
+   
+    height:372px;
+    width:372px;
+}
