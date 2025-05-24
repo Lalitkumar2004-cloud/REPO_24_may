@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <header>
+        
+   </header>
+   <main>
+    <select id="select" name="select1">Perform function on string:
+        <option value="length">To find string length</option>
+        <option value="charAt">Find the character at particular position</option>
+        <option value="toLowerCase">Convert string to Lowercase</option>
+        <option value="toUpperCase">Convert string to Uppercase</option>
+        <option value="repeat">Repeat a string</option>
+        <option value="split">Convert the string into array</option>
+        <option value="includes">string is present or not</option>
+        <option value="startsWith">String start with..</option>
+        <option value="endsWith">String ends with..</option>
+        <option value="at">Find the character at particular position</option>
+        <option value="concat">Concatination of two strings</option>
+        <option value="trim">Remove Blank Space</option>
+        <option value="slice">Slice out a part of string</option>
+        <option value="pad">Add Padding</option>
+        <option value="replace">Replace string</option>
+       
+    </select>
+    <button id="btn1" onclick="next()">Next</button>
+       
+    <div id="select_replace">
+        <label>Replace string:</label><br>
+        <input type="radio" name="replace" id="replaceAll" value="replaceAll">
+        <label for="replaceAll">Replace All the occurance</label><br>
+        <input type="radio" name="replace" id="replace" value="replace">
+        <label for="replace">Replace first occurance</label><br>
+        <button onclick="done()">Done</button>
+    </div>
+    <div id="select_blank">
+        <label>Remove Blank Space:</label><br>
+        <input type="radio" name="trim" id="trim" value="trim">
+        <label for="trim">Remove Blank Space from start and end</label><br>
+        <input type="radio" name="trim" id="trimStart" value="trimStart">
+        <label for="trimStart">Remove Blank Space from starting</label><br>
+        <input type="radio" name="trim" id="trimEnd" value="trimEnd">
+        <label for="trimEnd">Remove Blank Space from end</label><br>
+        <button onclick="done()">Done</button>
+    </div>
+    <div id="select_pad">
+        <label>Replace string:</label><br>
+        <input type="radio" name="pad" id="padEnd" value="padEnd">
+        <label for="padEnd">Add padding at ending</label><br>
+        <input type="radio" name="pad" id="padStart" value="padStart">
+        <label for="padStart">Add padding at begining</label><br>
+        <button onclick="done()">Done</button>
+    </div>
+    <div id="select_slice">
+        <label>Replace string:</label><br>
+        <input type="radio" name="slice" id="slice" value="slice">
+        <label for="slice">Using slice()</label><br>
+        <input type="radio" name="slice" id="subslice" value="substring">
+        <label for="substring">Using substring()</label><br>
+        <input type="radio" name="slice" id="substr" value="substr">
+        <label for="substr">Using substr()</label><br>
+        <button onclick="done()">Done</button>
+    </div>
+    
+    <p id="str"></p>
+    <label for="second_para" id="second"></label>
+    <input type="number" id="second_para"><br>
+    <label for="third_para" id="third"></label>
+    <input type="number" id="third_para"><br>
+
+    <label for="second_para_str" id="second_str"></label>
+    <input type="text" id="second_para_str"><br>
+    <label for="third_para" id="third_str"></label>
+    <input type="text" id="third_para_str"><br>
+    
+    <input type="text" id="guess" placeholder="Guess the Output">
+    <p id="output"></p>
+    <button onclick="back()" id="btn3">Play Again</button>
+    <button onclick="perform()" id="btn2">Perform</button>
+    <button onclick="reset()" id="btn4">Reset Score🔃</button>
+  <!--<select id="select_replace">Replace string
+            <option value="replaceAll">Replace All the occurance</option>
+            <option value="replace">Replace first occurance</option>
+        </select>
+        <select id="select_pad">Add Padding
+            <option value="padstart">Using padstart</option>
+            <option value="padend">Using padend</option>
+        </select>
+        <select id="select_blank">Remove Blank Space
+            <option value="trim">Using trim</option>
+            <option value="rtrim">Using rtrim</option>
+            <option value="ltrim">Using ltrim</option>
+        </select>
+        <select id="select_slice">Slice out a part of string
+            <option value="slice">Using Slice</option>
+            <option value="substring">Using Substring</option>
+            <option value="substr">Using Substr</option>
+        </select>
+        -->
+    
+   </main>
+   <script>
+    let score=0;
+    let todayDate=new Date();
+    let string1="Betty Botter bought some butter, but she said the butter’s bitter.";
+    let string2="SPLIT,THIS,STRING,PLEASE";
+    let string3="Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t very fuzzy, was he?";
+    let string4="She sells seashells by the seashore.";
+    let string5="SPLIT,this,STRING,please";;
+    let string6="Can you can a can as a canner can can a can?";
+    let string7="I scream, you scream, we all scream for ice cream!";
+    let string8="apple, banana, cherry";
+    let string9="Today is "+todayDate;
+    let string10="A big black bug bit a big black bear and made the big black bear bleed blood.";
+    const arr=[string1, string2, string3, string4, string5, string6, string7, string8, string9, string10];
+
+    document.getElementById('guess').style.display='none';
+    document.getElementById('second_para').style.display='none';
+    document.getElementById('third_para').style.display='none';
+    document.getElementById('second_para_str').style.display='none';
+    document.getElementById('third_para_str').style.display='none';
+    document.getElementById('select_slice').style.display="none";
+    document.getElementById('select_blank').style.display="none";
+    document.getElementById('select_pad').style.display="none";
+    document.getElementById('select_replace').style.display="none";
+    document.getElementById('btn4').style.display="none";
+    document.getElementById('btn3').style.display="none";
+    document.getElementById('btn2').style.display="none";
+    document.getElementById('str').style.display="none";
+    let operation,sec_str,three_str,str1,sec,three;
+        function next(){
+            document.getElementById('str').style.display="block";
+            let number= Math.floor(Math.random()*10)
+            str1 = arr[number]; 
+            document.getElementById('str').innerHTML=str1;
+            document.getElementById('guess').style.display="block";
+            document.getElementById('btn2').style.display="block";
+            document.getElementById('btn1').style.display="none";
+            document.getElementById('select').style.display="none";
+            operation=document.getElementById('select').value;
+            console.log(operation);
+            if(operation == "charAt"){
+                document.getElementById("second").style.display="initial";
+                document.getElementById("second_para").style.display="initial";
+                document.getElementById("second").innerHTML="Enter the position:";
+            }
+            else if(operation == "at"){
+                document.getElementById("second").style.display="initial";
+                document.getElementById("second_para").style.display="initial";
+                document.getElementById("second").innerHTML="Enter the position:";
+            }
+            else if(operation == "length"){}
+
+            else if(operation == "slice"){
+                document.getElementById('guess').style.display="none";
+                document.getElementById('str').style.display="none";
+                document.getElementById('select_slice').style.display="block";
+                document.getElementById('btn2').style.display="none";
+                document.getElementById('str').style.display="none";
+            }
+            else if(operation == "trim"){
+                document.getElementById('guess').style.display="none";
+                document.getElementById('str').style.display="none";
+                document.getElementById('select_blank').style.display="block";
+                document.getElementById('btn2').style.display="none";
+               
+            }
+            else if(operation == "replace"){
+                document.getElementById('guess').style.display="none";
+                document.getElementById('str').style.display="none";
+                document.getElementById('select_replace').style.display="block";
+                document.getElementById('btn2').style.display="none";
+                document.getElementById('str').style.display="none";
+            }
+            else if(operation == "pad"){
+                document.getElementById('guess').style.display="none";
+                document.getElementById('str').style.display="none";
+                document.getElementById('select_pad').style.display="block";
+                document.getElementById('btn2').style.display="none";
+                document.getElementById('str').style.display="none";
+            }
+            else if(operation == "toLowerCase"){}
+            else if(operation == "toUpperCase"){}
+      else if(operation == "repeat"){
+                document.getElementById("second").style.display="initial";
+                document.getElementById("second_para").style.display="initial";
+                document.getElementById("second").innerHTML="Hoe many times you want to repeat a string:";
+            }
+            else if(operation == "includes"){
+                document.getElementById("second_str").style.display="initial";
+                document.getElementById("second_para_str").style.display="initial";
+                document.getElementById("second_str").innerHTML="String you want to check:";
+            }
+            else if(operation == "startsWith"){
+                document.getElementById("second").style.display="initial";
+                document.getElementById("second_para").style.display="initial";
+                document.getElementById("second").innerHTML="Index from where searching start:";
+                document.getElementById("second_str").style.display="initial";
+                document.getElementById("second_para_str").style.display="initial";
+                document.getElementById("second_str").innerHTML="String start with:";
+            }
+            else if(operation == "endsWith"){
+                document.getElementById("second").style.display="initial";
+                document.getElementById("second_para").style.display="initial";
+                document.getElementById("second").innerHTML="Index from where searching Ends:";
+                document.getElementById("second_str").style.display="initial";
+                document.getElementById("second_para_str").style.display="initial";
+                document.getElementById("second_str").innerHTML="String ends with:";
+            }
+            else if(operation == "concat")
+            {
+                document.getElementById("second_str").style.display="initial";
+                document.getElementById("second_para_str").style.display="initial";
+                document.getElementById("second_str").innerHTML="String to concat:";
+            }
+            else if(operation == "split")
+            {
+                document.getElementById("second_str").style.display="initial";
+                document.getElementById("second_para_str").style.display="initial";
+                document.getElementById("second_str").innerHTML="Enter a character to split string:";
+            }
+            else{}
+          
+        }
+        function done(){
+            document.getElementById('guess').style.display="block";
+            document.getElementById("str").style.display="initial";
+            document.getElementById("btn2").style.display="initial";
+            if(operation=='slice'){
+                document.getElementById('select_slice').style.display="none";
+                document.getElementById("second").style.display="initial";
+                document.getElementById("second_para").style.display="initial";
+                document.getElementById("third").style.display="initial";
+                document.getElementById("third_para").style.display="initial";
+                document.getElementById("second").innerHTML="Startig index for slicing:";
+
+                operation=document.querySelector('input[name="slice"]:checked').value;
+                if(operation=='slice' || operation=='substring')
+                    document.getElementById("third").innerHTML="Ending index for slicing";
+                else
+                    document.getElementById("third").innerHTML="Length of substring";
+            }
+            else if(operation=='replace'){
+                document.getElementById('select_replace').style.display="none";
+                operation=document.querySelector('input[name="replace"]:checked').value;
+                document.getElementById("second_str").style.display="initial";
+                document.getElementById("second_para_str").style.display="initial";
+                document.getElementById("second_str").innerHTML="Old string:";
+                document.getElementById("third_str").style.display="initial";
+                document.getElementById("third_para_str").style.display="initial";
+                document.getElementById("third_str").innerHTML="New strig:";
+            }
+            else if(operation=='pad'){
+                document.getElementById('select_pad').style.display="none";
+                operation=document.querySelector('input[name="pad"]:checked').value;
+                document.getElementById("second").style.display="initial";
+                document.getElementById("second_para").style.display="initial";
+                document.getElementById("second").innerHTML="Padded Index:";
+                document.getElementById("second_str").style.display="initial";
+                document.getElementById("second_para_str").style.display="initial";
+                document.getElementById("second_str").innerHTML="String for padding:";
+            }
+            else if(operation='trim'){
+                document.getElementById('select_blank').style.display="none";
+                operation=document.querySelector('input[name="trim"]:checked').value;
+            }
+            else{}
+        }
+        function perform(){
+            let output;
+            let guess=document.getElementById('guess').value;
+            sec = second_para.value;
+            three = third_para.value;
+            sec_str = second_para_str.value;
+            three_str = third_para_str.value;
+            document.getElementById('btn3').style.display="block";
+            document.getElementById('btn4').style.display="block";
+            document.getElementById("output").style.display="block";
+            document.getElementById('btn2').style.display="none";
+            if(operation == "charAt")
+                output=document.getElementById("output").innerHTML=str1.charAt(sec);
+            else if(operation == "at")
+            output=document.getElementById("output").innerHTML=str1.at(sec);
+            else if(operation == "slice")
+            output=document.getElementById("output").innerHTML=str1.slice(sec,three);
+            else if(operation == "substring")
+            output=document.getElementById("output").innerHTML=str1.substring(sec,three);
+            else if(operation == "substr")
+            output=document.getElementById("output").innerHTML=str1.substr(sec,three);
+            else if(operation == "toLowerCase")
+            output=document.getElementById("output").innerHTML=str1.toLowerCase();
+            else if(operation == "toUpperCase")
+            output=document.getElementById("output").innerHTML=str1.toUpperCase();
+            else if(operation == "trimStart")
+            output=document.getElementById("output").innerHTML=str1.trimStart();
+            else if(operation == "trimEnd")
+            output=document.getElementById("output").innerHTML=str1.trimEnd();
+            else if(operation == "trim")
+            output=document.getElementById("output").innerHTML=str1.trim();
+            else if(operation == "repeat")
+            output=document.getElementById("output").innerHTML=str1.repeat(sec);
+            else if(operation == "replace")
+            output=document.getElementById("output").innerHTML=str1.replace(sec_str, three_str);
+            else if(operation == "replaceAll")
+            output=document.getElementById("output").innerHTML=str1.replaceAll(sec_str, three_str);
+            else if(operation == "includes")
+            output=document.getElementById("output").innerHTML=str1.includes(sec_str);
+            else if(operation == "startsWith")
+            output=document.getElementById("output").innerHTML=str1.startsWith(sec_str,sec);
+            else if(operation == "endsWith")
+            output=document.getElementById("output").innerHTML=str1.endsWith(sec_str,sec);
+            else if(operation == "concat")
+            output=document.getElementById("output").innerHTML=str1.concat(sec_str);
+            else if(operation == "split")
+            output=document.getElementById("output").innerHTML=str1.split(sec_str);
+            else if(operation == "length")
+            output=document.getElementById("output").innerHTML=str1.length;
+            else if(operation == "padStart")
+            output=document.getElementById("output").innerHTML=str1.padStart(sec,sec_str);
+            else if(operation == "padEnd")
+            output=document.getElementById("output").innerHTML=str1.padEnd(sec,sec_str);
+            else
+                document.getElementById("output").innerHTML="Select a valid operation";
+            if(guess==String(output)){
+                score++;
+                document.getElementById("output").innerHTML+=" Correct👍🏻 Your Score is: "+score;
+            }
+            else{
+                document.getElementById("output").innerHTML+= "✔️ "+ guess +" ❌ You Score is: " +score;
+            }        
+        }
+        function back(){
+            document.getElementById("btn1").style.display="initial";
+            document.getElementById("select").style.display="initial";
+            document.getElementById("btn2").style.display="none";
+            document.getElementById("str").style.display="none";
+            document.getElementById("second_para").style.display="none";
+            document.getElementById("second").style.display="none";
+            document.getElementById("third").style.display="none";
+            document.getElementById("third_para").style.display="none";
+            document.getElementById("second_para_str").style.display="none";
+            document.getElementById("second_str").style.display="none";
+            document.getElementById("third_str").style.display="none";
+            document.getElementById("third_para_str").style.display="none";
+            document.getElementById("btn2").style.display="none";
+            document.getElementById("btn3").style.display="none";
+            document.getElementById('btn4').style.display="none";
+            document.getElementById("output").style.display="none";
+            document.getElementById("guess").style.display="none";
+            str1=sec=three=operation=sec_str=three_str=guess=undefined;
+        }
+        function reset(){
+            back();
+            score=0;
+        }
+   </script>
+</body>
+</html>

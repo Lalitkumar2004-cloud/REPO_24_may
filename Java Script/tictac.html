@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+
+    .tic_tac_toc {
+      display: grid;
+      grid-template-columns: 100px 100px 100px;
+      grid-template-rows: 100px 100px 100px;
+      gap: 10px;
+      width: 320px;
+    }
+
+    .tic_tac_toc>button {
+    background-color: white;
+     box-shadow: 2px 2px 5px 2px black;
+     text-align: center;
+     padding: 1em;
+     font-size: xx-large;
+     font-weight:bolder;
+     box-sizing: border-box;
+    }
+
+   
+    .tic_tac_toc>button:hover{
+      background-color: rgb(197,196, 196);
+      transition: 0.8s ease;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--Tic_Tac_Toc-->
+  <h1>Tic-Tac-Toe</h1>
+  <div id="choose_player">
+    <button id="choose_player" onclick="single_player()">1 player</button>
+    <button id="choose_player" onclick="two_player()">2 player</button>
+  </div>
+  <!--for single player-->
+  <div id="single_input_name">
+
+    <input type id="single_name" placeholder="enter your name" required>
+    <button type="submit" onclick="to_player_start_single()"> Start game</button>
+  </div>
+  <!--for two player-->
+  <div id="two_input_name">
+
+    <input id="f_name" placeholder="1st_player_name " required>
+    <input id="l_name" placeholder="2nd_player_name" required>
+    <button type="submit" onclick="to_player_start_secound()">start game</button>
+
+  </div>
+  <h1 id="user_name"><span id='user'></span> Turn</h1>
+
+  <div class="tic_tac_toc" id="tic_tac_toc">
+ 
+    <button id="id1" onclick="div1()"></button>
+    <button id="id2" onclick="div2()"></button>
+    <button id="id3" onclick="div3()"></button>
+    <button id="id4" onclick="div4()"></button>
+    <button id="id5" onclick="div5()"></button>
+    <button id="id6" onclick="div6()"></button>
+    <button id="id7" onclick="div7()"></button>
+    <button id="id8" onclick="div8()"></button>
+    <button id="id9" onclick="div9()"></button>
+  </div><br>
+
+  <div id="buttons">
+    <button type="button" onclick="reset()">Reset</button>
+    <a href="home.html"><button type="button">Quit game</button></a>
+  </div><br>
+  <h2 id="winning">Congratulations <span id="winner"></span>wins!</h2>
+
+ <script>
+  let count=1,symbol1="x",user1,user2="computer", cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8,cell9,user_win;
+  
+   document.getElementById("tic_tac_toc").style.display = "none";
+    document.getElementById("user_name").style.display = "none";
+    document.getElementById("single_input_name").style.display = "none";
+    document.getElementById("two_input_name").style.display = "none";
+    document.getElementById("winning").style.display="none"
+    document.getElementById("buttons").style.display = "none"
+
+  
+
+    function single_player() {
+      document.getElementById("choose_player").style.display = "none";
+      document.getElementById("single_input_name").style.display = "initial";
+      document.getElementById("two_input_name").style.display = "none";
+    }
+    function two_player() {
+      document.getElementById("choose_player").style.display = "none";
+      document.getElementById("single_input_name").style.display = "none";
+      document.getElementById("two_input_name").style.display = "initial";
+    }
+    function reset(){
+      document.getElementById('id1').innerHTML='';
+      document.getElementById('id2').innerHTML='';
+      document.getElementById('id3').innerHTML='';
+      document.getElementById('id4').innerHTML='';
+      document.getElementById('id5').innerHTML='';
+      document.getElementById('id6').innerHTML='';
+      document.getElementById('id7').innerHTML='';
+      document.getElementById('id8').innerHTML='';
+      document.getElementById('id9').innerHTML='';
+      document.getElementById("winning").style.display="none";
+      
+      
+      document.getElementById("id1").disable = false;
+      document.getElementById("id2").disable = false;
+      document.getElementById("id3").disable = false;
+      document.getElementById("id4").disable = false;
+      document.getElementById("id5").disable = false;
+      document.getElementById("id6").disable = false;
+      document.getElementById("id7").disable = false;
+      document.getElementById("id8").disable = false;
+      document.getElementById("id9").disable = false;
+
+      count = 1;
+      symbol1 ="x";
+       cell1=cell2=cell3=cell4=cell5=cell6=cell7=cell8=cell9=user_win=null;
+    }
+
+    function to_player_start_single() {
+      
+      document.getElementById("single_input_name").style.display = "none";
+     document.getElementById("two_input_name").style.display="none";
+
+    
+     document.getElementById("buttons").style.display="initial";
+     document.getElementById("user_name").style.display="initial";
+     document.getElementById("tic_tac_toc").style.display="grid";
+  
+     user1=document.getElementById("single_name").value ;
+     document.getElementById("user").innerHTML="computer";
+
+    }
+
+
+    function to_player_start_secound() {
+      
+      document.getElementById("single_input_name").style.display = "none";
+     document.getElementById("two_input_name").style.display="none";
+
+    
+     document.getElementById("buttons").style.display="initial";
+     document.getElementById("user_name").style.display="initial";
+     document.getElementById("tic_tac_toc").style.display="grid";
+  
+     user1=document.getElementById("f_name").value ;
+     user2=document.getElementById("l_name").value ;
+     document.getElementById("user").innerHTML=user1;
+
+    }
+    function counting(){
+       if(count % 2 != 0)
+       Symbol1="o";
+      else
+      symbol1="x";
+    }
+  function compute_name(){
+     if(count % 2 != 0)
+     user_win=document.getElementById("user").innerHTML=user1;
+
+     else
+        user_win=document.getElementById("user").innerHTML=user2;
+
+  }
+  function disable_buttons(){
+      document.getElementById("id1").disable = true;
+      document.getElementById("id2").disable = true;
+      document.getElementById("id3").disable = true;
+      document.getElementById("id4").disable = true;
+      document.getElementById("id5").disable = true;
+      document.getElementById("id6").disable = true;
+      document.getElementById("id7").disable = true;
+      document.getElementById("id8").disable = true;
+      document.getElementById("id9").disable = true;
+     
+
+  }
+  function winning_statement(){
+    
+    document.getElementById("winning").style.display="initial";
+    document.getElementById("winner").innerHTML=user_win;
+    disable_buttons();
+
+  }
+   function winner(){
+    if(cell1 && cell2 && cell3 && cell4 && cell5 && cell6 && cell7 && cell8 && cell9 ) {
+    document.getElementById("winning").style.display="initial";
+    document.getElementById("winning").innerHTML="It's a Draw";
+   }
+   
+     if((cell1==cell2 && cell2==cell3) &&(cell1=='x' || cell1=='o'))
+              winning_statement();
+     if((cell4==cell5 && cell5==cell6) &&(cell4=='x' || cell4=='o'))
+     winning_statement();
+     if((cell7==cell8 && cell8==cell9) &&(cell7=='o' || cell7=='o'))
+     winning_statement();
+     if((cell1==cell4 && cell4==cell7) &&(cell1=='o' || cell1=='o'))
+     winning_statement();
+     if((cell2==cell5 && cell5==cell8) &&(cell2=='o' || cell2=='o'))
+     winning_statement();
+     if((cell3==cell6 && cell6==cell9) &&(cell3=='o' || cell3=='o'))
+     winning_statement();
+     if((cell1==cell5 && cell5==cell9) &&(cell1=='o' || cell1=='o'))
+     winning_statement();
+     if((cell3==cell5 && cell5==cell7) &&(cell3=='o' || cell3=='o'))
+     winning_statement();
+   
+
+      }
+      function div1(i_d){
+        counting();
+        document.getElementById(i_d).innerHTML=symbol1;
+        if(i_d=='id1')
+        cell1=symbol1;
+      else if(i_d=='id2')
+         cell2=symbol1;
+      else if(i_d=='id3')
+         cell3=symbol1;
+      else if(i_d=='id4')
+         cell4=symbol1;
+        else if(i_d=='id5')
+         cell5=symbol1;
+        else if(i_d=='id6')
+         cell6=symbol1;
+        else if(i_d=='id7')
+        cell7=symbol1;
+      else if(i_d=='id8')
+      cell8=symbol1;
+    else if (i_d=='id9')
+     cell9=symbol1;
+
+     document.getElementById(i_d).innerHTML = true;
+      winner();
+      compute_name();
+      count++;
+      }
+
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>

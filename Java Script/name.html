@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 >welcome : <span id='user'></span></h1>
+     
+    <input id="name" type="text" placeholder="Enter your name" >
+    <button id="btn1" type="button" onclick="submit()">Submit</button>
+    <button id="btn2" type="button" onclick="resubmit()">Re-submit your name</button>
+
+<script>
+    document.getElementById("btn2").style.display="none";
+
+    let users="user";
+     document.getElementById("user").innerHTML=users;
+
+     function submit(){
+       users= document.getElementById('name').value;
+       document.getElementById("user").innerHTML=users;
+       document.getElementById('name').style.display="none";
+       document.getElementById('btn1').style.display='none';
+       document.getElementById('btn2').style.display='inline';
+
+
+     }
+
+
+     function resubmit(){
+        
+       document.getElementById('name').style.display="inline";
+       document.getElementById('btn1').style.display='inline';
+       document.getElementById('btn2').style.display='none';
+
+
+     }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <label for="demo1" id="demo">Select operation you want to perform</label><br> 
+    <div class="string" name="methods" id="demo1" id="user-text">
+        <button onclick="charAt()">charAt()</button>
+        <button onclick="at()">at()</button>
+        <button onclick="length()">length</button>
+        <button onclick="slice()">slice()</button>
+        <button onclick="substring()">substring()</button>
+        <button onclick="substr()">substr()</button>
+        <button onclick="toLowerCase()">toLowerCase()</button>
+        <button onclick="toUpperCase()">toUpperCase()</button>
+        <button onclick="trimStart()">trimStart()</button>
+        <button onclick="trimEnd()">trimEnd()</button>
+        <button onclick="trim()">trim()</button>
+        <button onclick="repeat()">repeat()</button>
+        <button onclick="replace()">replace()</button>
+        <button onclick="replaceAll()">replaceAll()</button>
+        <button onclick="indexOf()">indexOf()</button>
+        <button onclick="lastIndexOf()">lastIndexOf()</button>
+        <button onclick="search()">search()</button>
+        <button onclick="includes()">includes()</button>
+        <button onclick="startsWith()">startsWith()</button>
+        <button onclick="endsWith()">endsWith()</button>
+         <button onclick="padStart()">padStart()</button>
+        <button onclick="padEnd()">padEnd()</button>
+        <button onclick="concat()">concat()</button>
+        <button onclick="split()">split()</button>
+    </div>
+   
+
+    <input type="text" id="str" placeholder="Enter String"><br>
+    <label for="second_para" id="second"></label>
+    <input type="number" id="second_para"><br>
+    <label for="third_para" id="third"></label>
+    <input type="number" id="third_para"><br>
+
+    <label for="second_para_str" id="second_str"></label>
+    <input type="text" id="second_para_str"><br>
+    <label for="third_para" id="third_str"></label>
+    <input type="text" id="third_para_str"><br>
+
+    <p id="output"></p><br>
+    <button onclick="back()" id="btn1">Back</button>
+    <button onclick="perform()" id="btn2">Perform</button>
+    <script>
+        document.getElementById("str").style.display="none";
+        document.getElementById("second_para").style.display="none";
+        document.getElementById("second").style.display="none";
+        document.getElementById("third").style.display="none";
+        document.getElementById("third_para").style.display="none";
+        document.getElementById("second_para_str").style.display="none";
+        document.getElementById("second_str").style.display="none";
+        document.getElementById("third_str").style.display="none";
+        document.getElementById("third_para_str").style.display="none";
+
+        document.getElementById("btn1").style.display="none";
+        document.getElementById("btn2").style.display="none";
+        document.getElementById("output").style.display="none";
+        let operation, str1, sec, three, sec_str, three_str;
+        function charAt(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+         
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Enter the position:";
+            document.getElementById("btn2").style.display="initial";
+           
+         }
+         function at(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+         
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Enter the position:";
+            document.getElementById("btn2").style.display="initial";
+          }
+         function length(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("btn2").style.display="initial";
+         }
+         function slice(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Startig index for slicing:";
+            document.getElementById("third").style.display="initial";
+            document.getElementById("third_para").style.display="initial";
+            document.getElementById("third").innerHTML="Ending index for slicing";
+            document.getElementById("btn2").style.display="initial";
+          }
+          function substring(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Startig index substring:";
+            document.getElementById("third").style.display="initial";
+            document.getElementById("third_para").style.display="initial";
+            document.getElementById("third").innerHTML="Ending index for substring";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function substr(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Startig index for substr:";
+            document.getElementById("third").style.display="initial";
+            document.getElementById("third_para").style.display="initial";
+            document.getElementById("third").innerHTML="length of substr";
+            document.getElementById("btn2").style.display="initial";
+             }
+            function toLowerCase(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("btn2").style.display="initial";
+          }
+            function toUpperCase(){
+                document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("btn2").style.display="initial";
+        }
+            function trimStart(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function trimEnd(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("btn2").style.display="initial";
+
+            }
+            function trim(){
+                document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function repeat(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Hoe many times you want to repeat a string:";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function replace(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="Old string:";
+            document.getElementById("third_str").style.display="initial";
+            document.getElementById("third_para_str").style.display="initial";
+            document.getElementById("third_str").innerHTML="New strig:";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function replaceAll(){
+             document.getElementById("demo").style.display="none";
+             document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="Old string:";
+            document.getElementById("third_str").style.display="initial";
+            document.getElementById("third_para_str").style.display="initial";
+            document.getElementById("third_str").innerHTML="New strig:";
+            document.getElementById("btn2").style.display="initial";
+            }
+         function indexOf(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="Enter string to find index:";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function lastIndexOf(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="Enter string to find index:";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function search(){
+           document.getElementById("demo").style.display="none";
+           document.getElementById("demo1").style.display="none";
+
+           document.getElementById("str").style.display="initial";
+           document.getElementById("second_str").style.display="initial";
+           document.getElementById("second_para_str").style.display="initial";
+           document.getElementById("second_str").innerHTML="String you want to search:";
+           document.getElementById("btn2").style.display="initial";
+            }
+            function includes(){
+             document.getElementById("demo").style.display="none";
+             document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="String you want to check:";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function startsWith(){
+             document.getElementById("demo").style.display="none";
+             document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Index from where searching start:";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="String start with:";
+            document.getElementById("btn2").style.display="initial";
+      }
+            function endsWith(){
+             document.getElementById("demo").style.display="none";
+             document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Index from where searching Ends:";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="String ends with:";
+            document.getElementById("btn2").style.display="initial";
+     }
+            function padStart(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Padded Index:";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="String for padding:";
+            document.getElementById("btn2").style.display="initial";
+         }
+            function padEnd(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second").style.display="initial";
+            document.getElementById("second_para").style.display="initial";
+            document.getElementById("second").innerHTML="Padded Index:";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="String for padding:";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function concat(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="String to concat:";
+            document.getElementById("btn2").style.display="initial";
+            }
+            function split(){
+            document.getElementById("demo").style.display="none";
+            document.getElementById("demo1").style.display="none";
+
+            document.getElementById("str").style.display="initial";
+            document.getElementById("second_str").style.display="initial";
+            document.getElementById("second_para_str").style.display="initial";
+            document.getElementById("second_str").innerHTML="Enter a character to split string:";
+            document.getElementById("btn2").style.display="initial";
+          }
+        
+          function perform(){
+           
+            document.getElementById("output").style.display="initial";
+            document.getElementById("btn1").style.display="initial";
+          }
+             
+            function toUpperCase() {
+                text_to_change = document.getElementById("user-text").value;
+    updated_text = text_to_change.toUpperCase();
+    document.getElementById("output").style.display = 'block';
+    document.getElementById("output").innerHTML = updated_text;
+
+}
+        
+        function back(){
+           
+            document.getElementById("demo").style.display="initial";
+            document.getElementById("demo1").style.display="initial";
+
+            document.getElementById("str").style.display="none";
+            document.getElementById("second_para").style.display="none";
+            document.getElementById("second").style.display="none";
+            document.getElementById("third").style.display="none";
+            document.getElementById("third_para").style.display="none";
+            document.getElementById("second_para_str").style.display="none";
+            document.getElementById("second_str").style.display="none";
+            document.getElementById("third_str").style.display="none";
+            document.getElementById("third_para_str").style.display="none";
+            document.getElementById("btn1").style.display="none";
+            document.getElementById("btn2").style.display="none";
+            document.getElementById("output").style.display="none";
+            str1=sec=three=operation=sec_str=three_str=undefined;
+        
+          }
+
+</script>
+    </body>
+
+    </html>
+
+
